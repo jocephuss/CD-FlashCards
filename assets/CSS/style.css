@@ -192,4 +192,7 @@ section {
   #disQ {
     align-items: center;
   }
+  .card {
+    height: fit-content;
+  }
 }
