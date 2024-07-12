@@ -1444,9 +1444,9 @@ function getRandomNumbers(totalQuestions) {
 }
 
 function updateCards(event) {
-  if (event.target.id === "#col1") {
+  if (event.target.id === "col1") {
     selectedQuestions = collectionsQuestions;
-  } else {
+  } else if (event.target.id === "dis1") {
     selectedQuestions = distributionQuestions;
   }
 
