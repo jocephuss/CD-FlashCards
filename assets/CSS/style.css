@@ -132,7 +132,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  height: 250px auto;
   width: 90%;
   border: 2px solid black;
   margin: 15px;
