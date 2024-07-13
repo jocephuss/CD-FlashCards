@@ -1405,30 +1405,6 @@ const distributionQuestions = [
   // Add more distribution questions here
 ];
 
-// function getRandomQuestions(questionsArray) {
-//   const shuffled = questionsArray.sort(() => 0.5 - Math.random());
-//   return shuffled.slice(0, 3);
-// }
-
-// function updateCards(questions) {
-//   document.getElementById("card1").querySelector("h1").textContent =
-//     questions[0];
-//   document.getElementById("card2").querySelector("h1").textContent =
-//     questions[1];
-//   document.getElementById("card3").querySelector("h1").textContent =
-//     questions[2];
-// }
-
-// document.getElementById("col1").addEventListener("click", () => {
-//   const questions = getRandomQuestions(collectionsQuestions);
-//   updateCards(questions);
-// });
-
-// document.getElementById("dis1").addEventListener("click", () => {
-//   const questions = getRandomQuestions(distributionQuestions);
-//   updateCards(questions);
-// });
-
 let randomNumbers = [];
 let selectedQuestions = [];
 
