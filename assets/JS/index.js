@@ -1470,6 +1470,35 @@ const acronymsQuestions = [
     question: "TT",
     answer: "Treatment Technique",
   },
+  {
+    question: "ppb",
+    answer: "Parts per Billion.",
+  },
+  {
+    question: "CCR.",
+    answer: "Consumer Confidence Report.",
+  },
+  {
+    question: "CPDWR.",
+    answer: "Colorado Primary Drinking Water Regulations.",
+  },
+  {
+    question: "SP.",
+    answer:
+      "Special Purpose water sample. Non-routine, usually used for bacTs, but can be used for other tests.",
+  },
+  {
+    question: "CDC.",
+    answer: "Centers for Disease Control and Prevention.",
+  },
+  {
+    question: "CDPHE.",
+    answer: "Colorado Department of Public Health and Environment.",
+  },
+  {
+    question: "CT.",
+    answer: "Contact Time.",
+  },
 ];
 
 let randomNumbers = [];
