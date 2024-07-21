@@ -1501,6 +1501,21 @@ const acronymsQuestions = [
   },
 ];
 
+const regulationsQuestions = [
+  {
+    question: "Chlorine MRDL.",
+    answer: "4.0 mg/L",
+  },
+  {
+    question: "Fluoride MCL.",
+    answer: " 4.0 mg/L.",
+  },
+  {
+    question: "Fluoride SMCL.",
+    answer: "2.0 mg/L.",
+  },
+];
+
 let randomNumbers = [];
 let selectedQuestions = [];
 
@@ -1524,6 +1539,8 @@ function updateCards(event) {
     selectedQuestions = acronymsQuestions;
   } else if (event.target.id === "path1") {
     selectedQuestions = pathogensQuestions;
+  } else if (event.target.id === "reg1") {
+    selectedQuestions = regulationsQuestions;
   }
 
   randomNumbers = getRandomNumbers(selectedQuestions.length);
@@ -1546,6 +1563,7 @@ document.querySelector("#col1").addEventListener("click", updateCards);
 document.querySelector("#dis1").addEventListener("click", updateCards);
 document.querySelector("#acr1").addEventListener("click", updateCards);
 document.querySelector("#path1").addEventListener("click", updateCards);
+document.querySelector("#reg1").addEventListener("click", updateCards);
 document.querySelector("#card1").addEventListener("click", showAnswer);
 document.querySelector("#card2").addEventListener("click", showAnswer);
 document.querySelector("#card3").addEventListener("click", showAnswer);

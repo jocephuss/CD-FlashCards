@@ -69,6 +69,12 @@ section {
   width: 60%;
 }
 
+#mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #ch1 {
   text-decoration: underline;
   font-size: 30px;
@@ -106,12 +112,35 @@ section {
   width: 100%;
 }
 
+.pathogens:hover {
+  transform: scale(1.1);
+  box-shadow: -2px 2px 2px 1px grey;
+}
+
 .acronyms {
   background-color: rgb(50, 77, 121);
   color: white;
   padding: 2px;
   border-radius: 5px;
   width: 100%;
+}
+
+.regulations {
+  background-color: rgb(36, 168, 153);
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+  width: auto;
+}
+
+.regulations:hover {
+  transform: scale(1.1);
+  box-shadow: -2px 2px 2px 1px grey;
+}
+
+.acronyms:hover {
+  transform: scale(1.1);
+  box-shadow: -2px 2px 2px 1px grey;
 }
 
 .Collections:hover {
@@ -155,6 +184,11 @@ section {
   padding: 10px;
   box-shadow: 0 0 5px 2px grey;
   height: 150px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: -2px 2px 2px 1px grey;
 }
 
 .right {
