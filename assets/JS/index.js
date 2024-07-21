@@ -1405,6 +1405,73 @@ const distributionQuestions = [
   // Add more distribution questions here
 ];
 
+const pathogensQuestions = [
+  {
+    question: "cyanobacteria",
+    answer:
+      "Bacteria. looks like Foam, scum, paint, or mats on surface. blue or blure-green in color can be other colors. produce toxins that make peopple and animals sick. bloom occur in fresh water and salt water, stomach pain headache, neurological symptoms, vomiting, diarrhea and liver damage",
+  },
+  {
+    question: "hepatitis A",
+    answer:
+      "Virus. from feces of infected people, the virus makes the body produce white blood cells called leukocytes. Can cause yellow skin/eyes, stomach illness, fever, vomiting, dark urine, light-colored feces, joint pain, fatigue.",
+  },
+  {
+    question: "Norovirus.",
+    answer:
+      "VIRUS. from feces of infected people, gets into water from sewage or polluted runoff, causes diarrhea, vomiting, nausea, stomach illness.",
+  },
+  {
+    question: "Rotavirus.",
+    answer:
+      " VIRUS. from feces of infected people, gets into water from sewage or polluted runoff. Causes diarrhea, vomiting, fever, stomach illness.",
+  },
+  {
+    question: "Shigella",
+    answer:
+      "BACTERIA. Found in feces of people, in food or water contaminated by infected people. Bloody Diarrhea, stomach pains, fever.",
+  },
+];
+
+const acronymsQuestions = [
+  {
+    question: "pCI",
+    answer: "Picocurie. A unit for radionuclides.",
+  },
+  {
+    question: "SW",
+    answer: "Surface water.",
+  },
+  {
+    question: "TCR.",
+    answer: "Total Coliform Rule.",
+  },
+  {
+    question: "RTCR.",
+    answer: "Revised Toyal Coliform Rule.",
+  },
+  {
+    question: "LCR.",
+    answer: "Lead and Copper Rule.",
+  },
+  {
+    question: "RLCR.",
+    answer: "Revised Lead and Copper Rule.",
+  },
+  {
+    question: "MCL.",
+    answer: "Maximum Contaminnation Level.",
+  },
+  {
+    question: "SMCL.",
+    answer: "Secondary Maximum Contaminnation Level.",
+  },
+  {
+    question: "TT",
+    answer: "Treatment Technique",
+  },
+];
+
 let randomNumbers = [];
 let selectedQuestions = [];
 
@@ -1424,6 +1491,10 @@ function updateCards(event) {
     selectedQuestions = collectionsQuestions;
   } else if (event.target.id === "dis1") {
     selectedQuestions = distributionQuestions;
+  } else if (event.target.id === "acr1") {
+    selectedQuestions = acronymsQuestions;
+  } else if (event.target.id === "path1") {
+    selectedQuestions = pathogensQuestions;
   }
 
   randomNumbers = getRandomNumbers(selectedQuestions.length);
@@ -1444,6 +1515,8 @@ function showAnswer(event) {
 
 document.querySelector("#col1").addEventListener("click", updateCards);
 document.querySelector("#dis1").addEventListener("click", updateCards);
+document.querySelector("#acr1").addEventListener("click", updateCards);
+document.querySelector("#path1").addEventListener("click", updateCards);
 document.querySelector("#card1").addEventListener("click", showAnswer);
 document.querySelector("#card2").addEventListener("click", showAnswer);
 document.querySelector("#card3").addEventListener("click", showAnswer);
