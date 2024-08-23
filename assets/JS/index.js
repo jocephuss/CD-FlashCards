@@ -1394,6 +1394,30 @@ const regulationsQuestions = [
     question: "Fluoride SMCL.",
     answer: "2.0 mg/L.",
   },
+  {
+    question: "Copper Action Level (AL).",
+    answer: "1.3 mg/L.",
+  },
+  {
+    question: "TC + EC-Routine BacT",
+    answer:
+      "BacT sample is positive for Total Coliform and negative for E. coli. Repeat at routine site, sample upstream and downstream within 5 taps.",
+  },
+  {
+    question: "TC+ EC+ Routine/Repeat BacT",
+    answer:
+      "BacT sample is positive for Total Coliform, positive for E. coli, EC+ result must be reported tp CDPHE by end of the day you're notified of result.",
+  },
+  {
+    question: "TC + EC+ Repeat BacT",
+    answer:
+      "Repeat again at rutine site and sample upstream and downstream within 5 taps.",
+  },
+  {
+    question: "Total Coliform Rule (TCR) MCL.",
+    answer:
+      "More than 5% of samples are TC+ in a month (Systems serving 10k or more).",
+  },
 ];
 
 let randomNumbers = [];
