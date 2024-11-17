@@ -2,16 +2,11 @@ const mongoose = require("mongoose");
 
 const connect = async () => {
   try {
-    const mongoURI =
-      process.env.MONGO_URI || "mongodb://localhost:27017/flashcards";
-    await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Connected to MongoDB");
-  } catch (err) {
-    console.error("Error connecting to MongoDB:", err);
-    process.exit(1);
+    await mongoose.connect(process.env.MONGO_URI, {});
+    console.log("Connected to MongoDB successfully!");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    process.exit(1); // Exit process with failure
   }
 };
 
