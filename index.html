@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="assets/CSS/style.css" />
     <title>C&D FlashCards</title>
   </head>
-  <header class="header"><span id="C">C</span>/<span id="D">D</span></header>
   <body>
+    <header class="header"><span id="C">C</span>/<span id="D">D</span></header>
+
     <section id="main-stage">
+      <!-- Collections Section -->
       <div class="left">
         <h1>Collections</h1>
-        <h2>Waste water Collections:</h2>
+        <h2>Wastewater Collections:</h2>
         <p>
           Wastewater collections systems are comprised of gravity pipes,
           manholes, tanks, lift stations, control structures, and force mains
@@ -28,32 +30,36 @@
           A wastewater collection system is a network of pipes, manholes, tanks,
           lift stations, control structures, and force mains. It gathers used
           water from residential and nonresidential customers and conveys it to
-          a wastewater treatment plant for processing and disposal1. These
+          a wastewater treatment plant for processing and disposal. These
           systems play a crucial role in maintaining public health and
-          environmental quality by managing sewage effectively
+          environmental quality by managing sewage effectively.
         </p>
       </div>
+
+      <!-- Flashcard Center Section -->
       <div class="center">
         <div id="container">
           <div id="colQ">
-            <button class="Collections" id="col1" type="submit">
+            <button class="Collections" id="collectionsBtn" type="button">
               Collections
             </button>
-            <button class="pathogens" id="path1" type="submit">
+            <button class="pathogens" id="pathogensBtn" type="button">
               Pathogens
             </button>
           </div>
           <div id="mid">
-            <h1 id="ch1">Flash cards</h1>
-            <button class="regulations" id="reg1" type="submit">
+            <h1 id="ch1">Flash Cards</h1>
+            <button class="regulations" id="regulationsBtn" type="button">
               Regulations
             </button>
           </div>
           <div id="disQ">
-            <button class="Distribution" id="dis1" type="submit">
+            <button class="Distribution" id="distributionBtn" type="button">
               Distribution
             </button>
-            <button class="acronyms" id="acr1" type="submit">Acronyms</button>
+            <button class="acronyms" id="acronymsBtn" type="button">
+              Acronyms
+            </button>
           </div>
         </div>
         <div class="card" id="card1">
@@ -66,6 +72,8 @@
           <h1>Placeholder</h1>
         </div>
       </div>
+
+      <!-- Distribution Section -->
       <div class="right">
         <h1>Distribution</h1>
         <h2>Water Distribution:</h2>
@@ -87,18 +95,40 @@
           A water distribution system is a crucial part of a water supply
           network. It consists of pipelines, storage facilities, pumps, and
           other components that transport potable water from centralized
-          treatment plants or wells to consumers. Here are the key components:
-          Water Mains: These pipelines, laid within public rights-of-way,
-          transport water within the distribution system. Large-diameter water
-          mains (primary feeders) connect treatment plants to service areas,
-          while smaller ones (secondary feeders) link primary feeders to
-          distributors near water users. Distributors: These water mains supply
-          individual fire hydrants and are located close to consumers. Service
-          Lines: Small-diameter pipes connect from water mains to water meters
-          at users’ locations. A service valve (curb stop) near the street curb
-          allows shutting off water to a specific location.
+          treatment plants or wells to consumers.
         </p>
       </div>
+    </section>
+
+    <!-- Add Question Form -->
+    <section id="add-question">
+      <h2>Add a New Question</h2>
+      <form id="addQuestionForm">
+        <label for="questionCategory">Category:</label>
+        <select id="questionCategory" required>
+          <option value="collections">Collections</option>
+          <option value="distribution">Distribution</option>
+          <option value="acronyms">Acronyms</option>
+          <option value="pathogens">Pathogens</option>
+          <option value="regulations">Regulations</option>
+        </select>
+
+        <label for="newQuestion">Question:</label>
+        <textarea
+          id="newQuestion"
+          placeholder="Enter your question"
+          required
+        ></textarea>
+
+        <label for="newAnswer">Answer:</label>
+        <textarea
+          id="newAnswer"
+          placeholder="Enter the answer"
+          required
+        ></textarea>
+
+        <button type="submit">Add Question</button>
+      </form>
     </section>
 
     <script src="assets/JS/index.js"></script>

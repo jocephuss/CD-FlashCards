@@ -947,11 +947,6 @@ const collectionsQuestions = [
   // Add more collection questions here
 ];
 
-// const waterQualityQuestions = [
-//   "What is the pH of a 50% HCl solution?",
-//   "What is the color of a 10% HNO3 solution?",
-//   "What is the color of a 10% NaOH solution?", ];
-
 const distributionQuestions = [
   {
     question: "What is the cone depression in a well?",
@@ -1420,54 +1415,119 @@ const regulationsQuestions = [
   },
 ];
 
-let randomNumbers = [];
-let selectedQuestions = [];
+const allQuestions = [
+  ...collectionsQuestions.map((q) => ({
+    category: "collections",
+    question: q.question,
+    answer: q.answer || q.Answer,
+  })),
+  ...distributionQuestions.map((q) => ({
+    category: "distribution",
+    question: q.question,
+    answer: q.answer || q.Answer,
+  })),
+  ...pathogensQuestions.map((q) => ({
+    category: "pathogens",
+    question: q.question,
+    answer: q.answer || q.Answer,
+  })),
+  ...acronymsQuestions.map((q) => ({
+    category: "acronyms",
+    question: q.question,
+    answer: q.answer || q.Answer,
+  })),
+  ...regulationsQuestions.map((q) => ({
+    category: "regulations",
+    question: q.question,
+    answer: q.answer || q.Answer,
+  })),
+];
 
+let selectedQuestions = [];
+let randomNumbers = [];
+
+// Utility: Get random numbers for selecting questions
 function getRandomNumbers(totalQuestions) {
   const numbers = new Set();
-
   while (numbers.size < 3) {
     const random = Math.floor(Math.random() * totalQuestions);
     numbers.add(random);
   }
-
   return Array.from(numbers);
 }
 
+// Update flashcards based on the selected category
 function updateCards(event) {
-  if (event.target.id === "col1") {
-    selectedQuestions = collectionsQuestions;
-  } else if (event.target.id === "dis1") {
-    selectedQuestions = distributionQuestions;
-  } else if (event.target.id === "acr1") {
-    selectedQuestions = acronymsQuestions;
-  } else if (event.target.id === "path1") {
-    selectedQuestions = pathogensQuestions;
-  } else if (event.target.id === "reg1") {
-    selectedQuestions = regulationsQuestions;
+  const categoryId = event.target.id;
+  const category = categoryId.replace("Btn", ""); // Extract category name from button ID
+  selectedQuestions = allQuestions.filter((q) => q.category === category);
+
+  if (selectedQuestions.length > 0) {
+    randomNumbers = getRandomNumbers(selectedQuestions.length);
+
+    // Update card content
+    document.querySelector("#card1 h1").textContent =
+      selectedQuestions[randomNumbers[0]].question;
+    document.querySelector("#card2 h1").textContent =
+      selectedQuestions[randomNumbers[1]].question;
+    document.querySelector("#card3 h1").textContent =
+      selectedQuestions[randomNumbers[2]].question;
+  } else {
+    alert("No questions available for this category.");
   }
-
-  randomNumbers = getRandomNumbers(selectedQuestions.length);
-
-  document.querySelector("#card1 h1").textContent =
-    selectedQuestions[randomNumbers[0]].question;
-  document.querySelector("#card2 h1").textContent =
-    selectedQuestions[randomNumbers[1]].question;
-  document.querySelector("#card3 h1").textContent =
-    selectedQuestions[randomNumbers[2]].question;
 }
 
+// Show the answer when a card is clicked
 function showAnswer(event) {
-  let cardIndex = parseInt(event.currentTarget.id.replace("card", "")) - 1;
-  document.querySelector(`#${event.currentTarget.id} h1`).textContent =
-    selectedQuestions[randomNumbers[cardIndex]].answer;
+  const cardIndex = parseInt(event.currentTarget.id.replace("card", "")) - 1;
+  if (selectedQuestions[randomNumbers[cardIndex]]) {
+    document.querySelector(`#${event.currentTarget.id} h1`).textContent =
+      selectedQuestions[randomNumbers[cardIndex]].answer;
+  }
 }
 
-document.querySelector("#col1").addEventListener("click", updateCards);
-document.querySelector("#dis1").addEventListener("click", updateCards);
-document.querySelector("#acr1").addEventListener("click", updateCards);
-document.querySelector("#path1").addEventListener("click", updateCards);
-document.querySelector("#reg1").addEventListener("click", updateCards);
+// Add a new question from the form
+function addQuestion(event) {
+  event.preventDefault();
+
+  const category = document.getElementById("questionCategory").value;
+  const questionText = document.getElementById("newQuestion").value.trim();
+  const answerText = document.getElementById("newAnswer").value.trim();
+
+  if (category && questionText && answerText) {
+    const newQuestion = {
+      category: category.toLowerCase(),
+      question: questionText,
+      answer: answerText,
+    };
+    allQuestions.push(newQuestion);
+
+    alert("Question added successfully!");
+    document.getElementById("addQuestionForm").reset(); // Clear form
+  } else {
+    alert("Please fill out all fields.");
+  }
+}
+
+// Attach event listeners to category buttons
+document
+  .querySelector("#collectionsBtn")
+  .addEventListener("click", updateCards);
+document
+  .querySelector("#distributionBtn")
+  .addEventListener("click", updateCards);
+document.querySelector("#pathogensBtn").addEventListener("click", updateCards);
+document.querySelector("#acronymsBtn").addEventListener("click", updateCards);
+document
+  .querySelector("#regulationsBtn")
+  .addEventListener("click", updateCards);
+
+// Attach event listeners to flashcards
 document.querySelector("#card1").addEventListener("click", showAnswer);
 document.querySelector("#card2").addEventListener("click", showAnswer);
 document.querySelector("#card3").addEventListener("click", showAnswer);
+
+// Attach event listener to the form for adding new questions
+document
+  .getElementById("addQuestionForm")
+  .addEventListener("submit", addQuestion);
