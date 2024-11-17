@@ -20,7 +20,7 @@ db.connect();
 // API Routes
 app.use("/api/questions", questionsRoutes);
 
-// Catch-All Route for React/Frontend
+// Fallback Route for Frontend
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
