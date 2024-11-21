@@ -22,7 +22,7 @@ app.use("/api/questions", questionsRoutes);
 
 // Fallback Route for Frontend
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "assets", "index.html"));
 });
 
 // Start Server
