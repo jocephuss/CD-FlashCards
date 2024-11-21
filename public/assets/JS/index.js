@@ -1446,7 +1446,7 @@ const allQuestions = [
 async function fetchQuestions(category) {
   try {
     const response = await fetch(
-      `https://cd-flashcards.onrender.com//api/questions/${category}`
+      `https://cd-flashcards.onrender.com/api/questions/${category}`
     );
     const data = await response.json();
     return data;
@@ -1521,7 +1521,7 @@ async function addQuestion(event) {
 
     try {
       const response = await fetch(
-        "https://cd-flashcards.onrender.com//api/questions",
+        "https://cd-flashcards.onrender.com/api/questions",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
