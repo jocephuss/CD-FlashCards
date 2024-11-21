@@ -1443,6 +1443,20 @@ const allQuestions = [
   })),
 ];
 
+async function fetchQuestions(category) {
+  try {
+    const response = await fetch(
+      `https://cd-flashcards.onrender.com//api/questions/${category}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    alert("Failed to fetch questions. Please try again later.");
+    return [];
+  }
+}
+
 let selectedQuestions = [];
 let randomNumbers = [];
 
@@ -1457,10 +1471,10 @@ function getRandomNumbers(totalQuestions) {
 }
 
 // Update flashcards based on the selected category
-function updateCards(event) {
+async function updateCards(event) {
   const categoryId = event.target.id;
-  const category = categoryId.replace("Btn", ""); // Extract category name from button ID
-  selectedQuestions = allQuestions.filter((q) => q.category === category);
+  const category = categoryId.replace("Btn", "").toLowerCase(); // Extract category name from button ID
+  selectedQuestions = await fetchQuestions(category);
 
   if (selectedQuestions.length > 0) {
     randomNumbers = getRandomNumbers(selectedQuestions.length);
@@ -1480,14 +1494,18 @@ function updateCards(event) {
 // Show the answer when a card is clicked
 function showAnswer(event) {
   const cardIndex = parseInt(event.currentTarget.id.replace("card", "")) - 1;
+  const questionText = document.querySelector(
+    `#${event.currentTarget.id} h1`
+  ).textContent;
+
   if (selectedQuestions[randomNumbers[cardIndex]]) {
     document.querySelector(`#${event.currentTarget.id} h1`).textContent =
       selectedQuestions[randomNumbers[cardIndex]].answer;
   }
 }
 
-// Add a new question from the form
-function addQuestion(event) {
+// Add a new question to the database
+async function addQuestion(event) {
   event.preventDefault();
 
   const category = document.getElementById("questionCategory").value;
@@ -1500,10 +1518,27 @@ function addQuestion(event) {
       question: questionText,
       answer: answerText,
     };
-    allQuestions.push(newQuestion);
 
-    alert("Question added successfully!");
-    document.getElementById("addQuestionForm").reset(); // Clear form
+    try {
+      const response = await fetch(
+        "https://cd-flashcards.onrender.com//api/questions",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newQuestion),
+        }
+      );
+
+      if (response.ok) {
+        alert("Question added successfully!");
+        document.getElementById("addQuestionForm").reset(); // Clear form
+      } else {
+        throw new Error("Failed to add question.");
+      }
+    } catch (error) {
+      console.error("Error adding question:", error);
+      alert("Failed to add question. Please try again later.");
+    }
   } else {
     alert("Please fill out all fields.");
   }
